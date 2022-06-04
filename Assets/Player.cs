@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Player : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Player : MonoBehaviour
     public GameObject guide;
     public float speed;
     public float shotSpeed;
+    public float shotSpeedDeviation;
     
     private Camera _camera;
     private Portal _portal;
@@ -48,8 +50,10 @@ public class Player : MonoBehaviour
     {
         var shot = Instantiate(projectile, transform.position, Quaternion.identity);
 
+        var deviation = (Random.value - 0.5f) * shotSpeedDeviation;
+        
         shot.GetComponent<Rigidbody2D>().velocity =
-            (crossHair.transform.position - transform.position).normalized * shotSpeed;
+            (crossHair.transform.position - transform.position).normalized * (shotSpeed + deviation);
     }
 
     private void FixedUpdate()

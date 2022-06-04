@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 275715226761664870}
   - component: {fileID: 275715226761664871}
   - component: {fileID: 3218343252443253630}
+  - component: {fileID: 5872376098060880687}
+  - component: {fileID: -1361482422934934120}
   m_Layer: 8
   m_Name: Boss
   m_TagString: Untagged
@@ -134,5 +136,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c19fc50055978a4aaa6b252e089364e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelDefinition: {fileID: 11400000, guid: 0b310c769560aa840a6f146dc9a75431, type: 2}
+  spawnInterval: 4
+  spawnCount: 3
+  health: 10
+  isAggressive: 0
+--- !u!114 &5872376098060880687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275715226761664869}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ef1db8db261544bb7e148452d78a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 80
+--- !u!114 &-1361482422934934120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275715226761664869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54960ce4f4bf7d14cb50384f2ee70d94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

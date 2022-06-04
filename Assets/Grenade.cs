@@ -6,6 +6,7 @@ using UnityEngine;
 public class Grenade : MonoBehaviour
 {
     private Rigidbody2D _rigidbody2d;
+    public GameObject explosion;
 
     private void Awake()
     {
@@ -17,7 +18,13 @@ public class Grenade : MonoBehaviour
     {
         if (_rigidbody2d.velocity.sqrMagnitude <= (0.5f * 0.5f))
         {
-            Destroy(gameObject);
+            Explode();
         }
+    }
+
+    private void Explode()
+    {
+        Instantiate(explosion, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

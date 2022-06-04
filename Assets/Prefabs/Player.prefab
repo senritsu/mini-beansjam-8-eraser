@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2cb2386a98ddd8439548a637658276d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
+  projectile: {fileID: 8420230607202495819, guid: 409a61bc228e8b842aa14a8dffb1e774, type: 3}
   crossHair: {fileID: 0}
   guide: {fileID: 0}
   speed: 4

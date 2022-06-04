@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +7,8 @@ public class Portal : MonoBehaviour
     private Color _defaultColor;
     private Boss _boss;
     public bool isActivated;
+
+    public string targetSceneName;
 
     private void Awake()
     {
@@ -36,7 +35,7 @@ public class Portal : MonoBehaviour
         if (player)
         {
             // just restart for now
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(targetSceneName);
         }
     }
 

@@ -1,23 +1,19 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
-    private SpriteRenderer _renderer;
-    
     public bool destroyed;
 
     private Collider2D _player;
     public float exposureTime;
 
-    public PlantDefinition plantDefinition;
-        
+    public float maxExposureTime;
+    private Animator _animator;
+    private static readonly int Destroyed = Animator.StringToHash("Destroyed");
+
     private void Awake()
     {
-        _renderer = GetComponent<SpriteRenderer>();
-        _renderer.color = plantDefinition.defaultColor;
+        _animator = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -45,7 +41,7 @@ public class Plant : MonoBehaviour
             exposureTime += Time.deltaTime;
         }
 
-        if (exposureTime >= plantDefinition.maxExposureTime)
+        if (exposureTime >= maxExposureTime)
         {
             Die();
         }
@@ -54,6 +50,6 @@ public class Plant : MonoBehaviour
     private void Die()
     {
         destroyed = true;
-        _renderer.color = plantDefinition.destroyedColor;
+        _animator.SetBool(Destroyed, true);
     }
 }

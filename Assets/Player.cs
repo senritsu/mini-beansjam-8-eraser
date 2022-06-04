@@ -29,12 +29,6 @@ public class Player : MonoBehaviour
         var mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
         crossHair.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
 
-        var toPortal = _portal.transform.position - transform.position;
-        var distanceToPortal = toPortal.magnitude;
-        
-        guide.SetActive(distanceToPortal >= 12);
-        guide.transform.localPosition = toPortal.normalized * 3f;
-
         _direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
 
         if (Input.GetMouseButtonDown(0))

@@ -5,21 +5,21 @@ public class Player : MonoBehaviour
 {
     public GameObject projectile;
     public GameObject crossHair;
-    public GameObject guide;
     public float speed;
     public float shotSpeed;
     public float shotSpeedDeviation;
+    public AudioClip shotSound;
     
     private Camera _camera;
-    private Portal _portal;
     private Rigidbody2D _rigidbody2D;
     private Vector2 _direction;
+    private AudioSource _audioSource;
 
     // Start is called before the first frame update
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _camera = Camera.main;
-        _portal = FindObjectOfType<Portal>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
@@ -45,6 +45,11 @@ public class Player : MonoBehaviour
         
         shot.GetComponent<Rigidbody2D>().velocity =
             (crossHair.transform.position - transform.position).normalized * (shotSpeed + deviation);
+
+        if (shotSound)
+        {
+            _audioSource.PlayOneShot(shotSound);
+        }
     }
 
     private void FixedUpdate()

@@ -123,23 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &396208626 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7503835985254810894, guid: db777cc37cbccd24eb1eb433371394da, type: 3}
-  m_PrefabInstance: {fileID: 5098255549452449450}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &396208630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396208626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff7821541efd01f48a90ba8b35b28f67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1525275715
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,26 +292,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3963139618017007064, guid: db777cc37cbccd24eb1eb433371394da, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3963139618017007064, guid: db777cc37cbccd24eb1eb433371394da, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3963139618017007064, guid: db777cc37cbccd24eb1eb433371394da, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3963139618017007064, guid: db777cc37cbccd24eb1eb433371394da, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4122410991845907670, guid: db777cc37cbccd24eb1eb433371394da, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 1715aaf69aa295e40b2c0d658e87f523, type: 2}
     - target: {fileID: 4149207390085611050, guid: db777cc37cbccd24eb1eb433371394da, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -372,6 +335,18 @@ PrefabInstance:
     - target: {fileID: 4149207390085611050, guid: db777cc37cbccd24eb1eb433371394da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5762128466683172222, guid: db777cc37cbccd24eb1eb433371394da, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5762128466683172222, guid: db777cc37cbccd24eb1eb433371394da, type: 3}
+      propertyPath: m_Volume
+      value: 0.763
+      objectReference: {fileID: 0}
+    - target: {fileID: 5762128466683172222, guid: db777cc37cbccd24eb1eb433371394da, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7503835985254810894, guid: db777cc37cbccd24eb1eb433371394da, type: 3}
       propertyPath: m_Name

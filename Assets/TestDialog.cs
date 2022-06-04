@@ -16,13 +16,8 @@ public class TestDialog : MonoBehaviour
 
     private IEnumerator DisplayDialogue()
     {
-        DialogMaster.master.PrintDialog("Du solltest nicht hier sein...", Color.red, 4f);
-        yield return new WaitForSeconds(6f);
-        DialogMaster.master.PrintDialog("Schreite durch das Portal, vielleicht findest du einen Weg", Color.red, 4f);
-        yield return new WaitForSeconds(6f);
-        DialogMaster.master.PrintDialog("Du hast nicht viel Zeit", Color.red, 4f);
-        yield return new WaitForSeconds(6f);
+        DialogMaster.master.PrintDialog("Du solltest nicht hier sein...\nSchreite durch das Portal, vielleicht findest du einen Weg\nDu hast nicht viel Zeit", Color.red, 8f);
 
-        Destroy(FindObjectOfType<Boss>().gameObject);
+        yield return null;
     }
 }

@@ -3,19 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
-    private SpriteRenderer _renderer;
-    private Color _defaultColor;
     private Boss _boss;
     public bool isActivated;
 
     public string targetSceneName;
+    private static readonly int Activated = Animator.StringToHash("Activate");
+    private Animator _animator;
 
     private void Awake()
     {
-        _renderer = GetComponent<SpriteRenderer>();
-
-        _defaultColor = _renderer.color;
-        _renderer.color = new Color(_defaultColor.grayscale, _defaultColor.grayscale, _defaultColor.grayscale);
+        _animator = GetComponent<Animator>();
 
         _boss = FindObjectOfType<Boss>();
     }
@@ -23,7 +20,7 @@ public class Portal : MonoBehaviour
     private void Activate()
     {
         isActivated = true;
-        _renderer.color = _defaultColor;
+        _animator.SetTrigger(Activated);
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -34,7 +31,6 @@ public class Portal : MonoBehaviour
 
         if (player)
         {
-            // just restart for now
             SceneManager.LoadScene(targetSceneName);
         }
     }

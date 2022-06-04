@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
         var mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
         crossHair.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
 
-        _direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+        _direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -54,6 +54,6 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rigidbody2D.velocity = _direction * speed;
+        _rigidbody2D.position += _direction * speed * Time.fixedDeltaTime;
     }
 }

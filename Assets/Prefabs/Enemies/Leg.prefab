@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e302ec8b84bfa41bc19579ea4e719b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathEffect: {fileID: 3120583102803961864, guid: bac6e271d274b7c4a88ea0f422924103, type: 3}
 --- !u!114 &-2079842084656280862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8379134379579fd48a8609a3ce7cfbde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultRightwards: 0
+  target: {fileID: 0}
 --- !u!58 &933654768
 CircleCollider2D:
   m_ObjectHideFlags: 0

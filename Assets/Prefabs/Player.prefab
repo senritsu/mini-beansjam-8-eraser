@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2145817130380696277}
   - component: {fileID: 2145817130380696276}
   - component: {fileID: 2145817130380696275}
-  - component: {fileID: 2145817130380696274}
   - component: {fileID: 2145817130380696272}
+  - component: {fileID: 62567443}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -111,22 +111,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!70 &2145817130380696274
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2145817130380696279}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
 --- !u!114 &2145817130380696272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,11 +124,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 8420230607202495819, guid: 409a61bc228e8b842aa14a8dffb1e774, type: 3}
-  crossHair: {fileID: 0}
-  guide: {fileID: 0}
+  crossHair: {fileID: 6429925175289518107}
+  guide: {fileID: 7915125488641317686}
   speed: 4
   shotSpeed: 40
   shotSpeedDeviation: 5
+--- !u!58 &62567443
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145817130380696279}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.5}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &3343791506593925082
 GameObject:
   m_ObjectHideFlags: 0

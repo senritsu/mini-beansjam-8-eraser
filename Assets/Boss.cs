@@ -23,9 +23,11 @@ public class Boss : MonoBehaviour
     public GameObject deathEffect;
     public Animator spawnMarker;
     private static readonly int SpawnParameter = Animator.StringToHash("Spawn");
+    private AudioSource _audioSource;
 
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _moveTowardsPlayer = GetComponent<MoveTowardsPlayer>();
         _animator = GetComponent<Animator>();
         _player = FindObjectOfType<Player>();
@@ -68,6 +70,7 @@ public class Boss : MonoBehaviour
 
     private IEnumerator BossBehaviour()
     {
+        _audioSource.Play();
         DialogMaster.master.PrintDialog("WHO DARES TO INTRUDE IN OUR GARDENS!!!",Color.red, 3f);
         
         yield return new WaitForSeconds(1.5f);

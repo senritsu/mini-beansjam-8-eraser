@@ -11,7 +11,8 @@ public class Plant : MonoBehaviour
 
     public float maxExposureTime;
     private Animator _animator;
-    private static readonly int Destroyed = Animator.StringToHash("Destroyed");
+    private static readonly int DestroyedParameter = Animator.StringToHash("Destroyed");
+    private static readonly int ExposedParameter = Animator.StringToHash("Exposed");
 
     private void Awake()
     {
@@ -29,18 +30,18 @@ public class Plant : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.GetComponent<Player>())
-        {
-            _player = col;
-        }
+        if (!col.GetComponent<Player>()) return;
+        
+        _player = col;
+        _animator.SetBool(ExposedParameter, true);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other == _player)
-        {
-            _player = null;
-        }
+        if (other != _player) return;
+        
+        _player = null;
+        _animator.SetBool(ExposedParameter, false);
     }
 
     private void Update()
@@ -61,6 +62,6 @@ public class Plant : MonoBehaviour
     private void Die()
     {
         destroyed = true;
-        _animator.SetBool(Destroyed, true);
+        _animator.SetBool(DestroyedParameter, true);
     }
 }

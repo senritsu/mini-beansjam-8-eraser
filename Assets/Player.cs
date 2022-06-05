@@ -1,9 +1,12 @@
+using System.Linq;
+using System.Security.Cryptography;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Player : MonoBehaviour
 {
     public GameObject projectile;
+    public GameObject homingMissile;
     public GameObject crossHair;
     public float speed;
     public float shotSpeed;
@@ -14,6 +17,14 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private Vector2 _direction;
     private AudioSource _audioSource;
+
+
+    public AudioSource chargeSound;
+    public float chargingThreshold = 0.5F;
+    private float audioTimer = 0.0F;
+    private int chargeAmount = 25;
+    private int chargeCounter = 0;
+    private bool charging = false;
 
     // Start is called before the first frame update
     private void Awake()
@@ -35,6 +46,20 @@ public class Player : MonoBehaviour
         {
             Shoot();
         }
+
+        if (Input.GetMouseButton(1))
+        {
+            Charging();
+            
+        }
+        if (Input.GetMouseButtonUp(1))
+        {
+            chargeSound.Stop();
+            if (chargeCounter >= chargeAmount)
+                HomingMissile();
+            chargeCounter = 0;
+        }
+
     }
 
     private void Shoot()
@@ -52,8 +77,64 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void Charging()
+    {
+        audioTimer += Time.deltaTime;
+        if (audioTimer > 0.5F)
+        {
+            float progress = (audioTimer+ chargeCounter) * (chargeSound.clip.length / chargeAmount / 2);
+            if (progress> chargeSound.clip.length - 0.5F)
+            {
+                chargeSound.time = chargeSound.clip.length - 0.5F;
+            }
+            else
+            {
+                chargeSound.time = chargeCounter * (chargeSound.clip.length / chargeAmount / 2);
+            }
+            chargeSound.Play();
+            audioTimer = 0.0F;
+        }
+        switch (chargeCounter % 4)
+        {
+            case 0:
+                if (Input.GetAxis("Mouse X") > chargingThreshold)
+                    chargeCounter++;
+                break;
+            case 1:
+                if (Input.GetAxis("Mouse Y") > chargingThreshold)
+                    chargeCounter++;
+                break;
+            case 2:
+                if (Input.GetAxis("Mouse X") < chargingThreshold)
+                    chargeCounter++;
+                break;
+            case 3:
+                if (Input.GetAxis("Mouse Y") < chargingThreshold)
+                    chargeCounter++;
+                break;
+        }
+
+        
+    }
+    
+    private void HomingMissile()
+    {
+        var shot = Instantiate(homingMissile, transform.position, Quaternion.Euler(crossHair.transform.position - transform.position));
+
+        var enemy = GameObject.FindObjectsOfType<Enemy>().ToList().
+            OrderBy(enemy => Vector2.Distance(crossHair.transform.position, enemy.transform.position))
+            .ToList();
+
+        if (enemy.Count == 0)
+            Destroy(gameObject);
+        
+        shot.GetComponent<HomingMissile>().target = enemy.First();
+        Vector2 sideways = Vector2.Perpendicular((crossHair.transform.position - transform.position).normalized) * (Random.Range(0,2)*2-1);
+        shot.GetComponent<Rigidbody2D>().AddForce(sideways * Random.Range(-1,1) * 2, ForceMode2D.Impulse);
+    }
+
     private void FixedUpdate()
     {
-        _rigidbody2D.position += _direction * speed * Time.fixedDeltaTime;
+        _rigidbody2D.velocity = _direction * speed;
     }
 }

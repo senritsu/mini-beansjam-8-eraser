@@ -8,8 +8,13 @@ public class Enemy : MonoBehaviour
     {
         if (col.GetComponent<Damage>()?.amount != null)
         {
-            Instantiate(deathEffect, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            Die();
         }
     }
+
+   public void Die()
+   {
+       Instantiate(deathEffect, transform.position, Quaternion.identity);
+       Destroy(gameObject);
+   }
 }

@@ -1444,6 +1444,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 2587289123257973253, guid: fe81ae3e5603a814aa18837f957f2c3d, type: 3}
+      propertyPath: m_Radius
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe81ae3e5603a814aa18837f957f2c3d, type: 3}
 --- !u!1001 &2687331405963182901

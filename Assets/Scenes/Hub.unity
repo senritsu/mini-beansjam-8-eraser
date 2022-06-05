@@ -288,6 +288,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 101016351}
     m_Modifications:
     - target: {fileID: 5356866750698774619, guid: 99c0e0b6af3ee7a4f9cdd57f400e864f, type: 3}
+      propertyPath: m_text
+      value: 'WASD to move
+
+        LMB to shoot'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356866750698774619, guid: 99c0e0b6af3ee7a4f9cdd57f400e864f, type: 3}
       propertyPath: m_fontSize
       value: 19.7
       objectReference: {fileID: 0}

@@ -14,6 +14,9 @@ public class Spawner : MonoBehaviour
     public float plantSpawnRadiusNear;
     public float plantSpawnRadiusFar;
 
+    public Animator spawnMarker;
+    private static readonly int SpawnParameter = Animator.StringToHash("Spawn");
+
     private void Awake()
     {
         _plant = GetComponent<Plant>();
@@ -46,7 +49,14 @@ public class Spawner : MonoBehaviour
 
             var enemy = levelDefinition.enemies[Random.Range(0, levelDefinition.enemies.Length)];
             var v = Random.insideUnitCircle;
-            Instantiate(enemy, transform.position + (Vector3)(v.normalized * 2 + v * 5), Quaternion.identity);
+            var position = transform.position + (Vector3)(v.normalized * 2 + v * 5);
+
+            spawnMarker.transform.position = position + Vector3.down;
+            
+            spawnMarker.SetTrigger(SpawnParameter);
+            yield return new WaitForSeconds(1.5f);
+            Instantiate(enemy, position, Quaternion.identity);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }

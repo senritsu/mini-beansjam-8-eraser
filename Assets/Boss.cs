@@ -21,6 +21,8 @@ public class Boss : MonoBehaviour
     private Animator _animator;
     private MoveTowardsPlayer _moveTowardsPlayer;
     public GameObject deathEffect;
+    public Animator spawnMarker;
+    private static readonly int SpawnParameter = Animator.StringToHash("Spawn");
 
     private void Awake()
     {
@@ -79,20 +81,27 @@ public class Boss : MonoBehaviour
             var groupPosition = (Vector3)Random.insideUnitCircle * 6;
             var bossSafetyZone = groupPosition.normalized * 4;
 
-            var temporaryPosition = groupPosition + bossSafetyZone;
+            var temporaryLocalPosition = groupPosition + bossSafetyZone;
 
-            var offsetToPlayer = temporaryPosition - _player.transform.position;
+            var offsetToPlayer = temporaryLocalPosition - _player.transform.position;
             if (offsetToPlayer.magnitude <= 2)
             {
-                temporaryPosition += offsetToPlayer.normalized * 2;
+                temporaryLocalPosition += offsetToPlayer.normalized * 2;
             }
+            
+            spawnMarker.transform.position = transform.position + temporaryLocalPosition + Vector3.down;
+            spawnMarker.SetTrigger(SpawnParameter);
+            
+            yield return new WaitForSeconds(1.5f);
 
             for (var i = 0; i < spawnCount; i++)
             {
                 var enemy = levelDefinition.enemies[Random.Range(0, levelDefinition.enemies.Length)];
                 var localPosition = (Vector3)Random.insideUnitCircle * 2;
-                Instantiate(enemy, transform.position + temporaryPosition + localPosition, Quaternion.identity);
+                Instantiate(enemy, transform.position + temporaryLocalPosition + localPosition, Quaternion.identity);
             }
+            
+            yield return new WaitForSeconds(0.5f);
         }
     }
 

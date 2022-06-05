@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6299133701108670168}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActivated: 0
-  targetSceneName: Green
+  targetSceneName: Hub
 --- !u!95 &1867643802674700848
 Animator:
   serializedVersion: 4
@@ -135,5 +135,5 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.1, y: 1.2}
+  m_Size: {x: 4, y: 7}
   m_Direction: 0

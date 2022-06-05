@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -28,10 +29,13 @@ public class Player : MonoBehaviour
 
     public int RespawnsRemaining;
     private GameObject _respawnMarkers;
+    private static readonly int MovingParameter = Animator.StringToHash("Moving");
+    private Animator _animator;
 
     // Start is called before the first frame update
     private void Awake()
     {
+        _animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>();
         _camera = Camera.main;
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -50,6 +54,8 @@ public class Player : MonoBehaviour
         crossHair.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
 
         _direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        
+        _animator.SetBool(MovingParameter, _direction.magnitude >= double.Epsilon);
 
         if (Input.GetMouseButtonDown(0))
         {

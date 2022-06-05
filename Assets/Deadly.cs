@@ -1,16 +1,24 @@
+using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Deadly : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D col)
     {
         var player = col.gameObject.GetComponent<Player>();
+
+        if (!player) return;
         
-        if (player)
-        {
-            // just restart for now
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+        ResetPlayerToLastCheckpoint(player);
+    }
+
+    private static void ResetPlayerToLastCheckpoint(Player player)
+    {
+        var lastActiveCheckpoint = FindObjectsOfType<Checkpoint>()
+            .Where(x => x.IsActive)
+            .OrderBy(x => x.checkpoint)
+            .Last();
+
+        player.transform.position = lastActiveCheckpoint.transform.position;
     }
 }

@@ -32,6 +32,7 @@ public class Portal : MonoBehaviour
         if (player)
         {
             SceneManager.LoadScene(targetSceneName);
+            
         }
     }
 

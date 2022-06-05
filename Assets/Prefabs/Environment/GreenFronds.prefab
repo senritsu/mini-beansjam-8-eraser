@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyed: 0
   exposureTime: 0
-  maxExposureTime: 5
+  maxExposureTime: 4
 --- !u!58 &4257238998488488953
 CircleCollider2D:
   m_ObjectHideFlags: 0

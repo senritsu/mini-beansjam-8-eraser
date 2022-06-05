@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.21320489, g: 0.17328231, b: 0.6226415, a: 1}
+  m_Color: {r: 0.29980573, g: 0.62352943, b: 0.17254901, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyed: 0
   exposureTime: 0
-  maxExposureTime: 8
+  maxExposureTime: 6
 --- !u!114 &9195986110230767274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +116,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelDefinition: {fileID: 11400000, guid: 0b310c769560aa840a6f146dc9a75431, type: 2}
-  spawnInterval: 3
+  spawnInterval: 8
+  plantSpawnCountNear: 15
+  plantSpawnCountFar: 30
+  plantSpawnRadiusNear: 15
+  plantSpawnRadiusFar: 50
 --- !u!58 &-3824749763763667932
 CircleCollider2D:
   m_ObjectHideFlags: 0

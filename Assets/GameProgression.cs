@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class GameProgression : MonoBehaviour
@@ -31,5 +32,11 @@ public class GameProgression : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void AddCheckpoint(Checkpoint checkpoint)
+    {
+        activatedCheckpoints =
+            activatedCheckpoints.Concat(new[] { checkpoint }).Distinct().OrderBy(x => x).ToArray();
     }
 }

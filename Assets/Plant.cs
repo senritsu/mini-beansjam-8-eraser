@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Plant : MonoBehaviour
 {
@@ -14,6 +16,15 @@ public class Plant : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        GetComponent<SpriteRenderer>().flipX = Random.value < 0.5f;
+    }
+
+    private void Start()
+    {
+        // TODO if level 2 exists, determine which level you are in
+        if (GameProgression.Instance.smithQuestProgress < GameProgression.SmithQuestProgress.DestroyedFirstBoss) return;
+        
+        destroyed = true;
     }
 
     private void OnTriggerEnter2D(Collider2D col)

@@ -25,7 +25,7 @@ public class Plant : MonoBehaviour
         // TODO if level 2 exists, determine which level you are in
         if (GameProgression.Instance.smithQuestProgress < GameProgression.SmithQuestProgress.DestroyedFirstBoss) return;
         
-        destroyed = true;
+        Die();
     }
 
     private void OnTriggerEnter2D(Collider2D col)

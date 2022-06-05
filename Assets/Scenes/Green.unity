@@ -206,7 +206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &156687845
 Transform:
   m_ObjectHideFlags: 0
@@ -2554,22 +2554,6 @@ PrefabInstance:
     - target: {fileID: 275715226761664869, guid: 724ddd18892f73747aa97d30c7124a28, type: 3}
       propertyPath: m_Name
       value: Boss
-      objectReference: {fileID: 0}
-    - target: {fileID: 4601635359492490226, guid: 724ddd18892f73747aa97d30c7124a28, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4601635359492490226, guid: 724ddd18892f73747aa97d30c7124a28, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4601635359492490226, guid: 724ddd18892f73747aa97d30c7124a28, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4601635359492490226, guid: 724ddd18892f73747aa97d30c7124a28, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 724ddd18892f73747aa97d30c7124a28, type: 3}

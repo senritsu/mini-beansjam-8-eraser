@@ -51,6 +51,6 @@ public class SmithDialog : MonoBehaviour
 
         yield return new WaitForSeconds(5f);
         
-        DialogMaster.master.PrintDialog("Und das wars auch schon mit Eraser, vielen Dank fürs spielen!",Color.green, 2f);
+        DialogMaster.master.PrintDialog("Und das wars auch schon mit Eraser, vielen Dank fürs Spielen!",Color.green, 2f);
     }
 }

@@ -14,6 +14,8 @@ public class Plant : MonoBehaviour
     private static readonly int DestroyedParameter = Animator.StringToHash("Destroyed");
     private static readonly int ExposedParameter = Animator.StringToHash("Exposed");
 
+    public event EventHandler OnDeath;
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -59,8 +61,10 @@ public class Plant : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
+        OnDeath?.Invoke(this, EventArgs.Empty);
+        
         destroyed = true;
         _animator.SetBool(DestroyedParameter, true);
     }

@@ -97,6 +97,8 @@ public class Boss : MonoBehaviour
                     GameProgression.Instance.smithQuestProgress =
                         GameProgression.SmithQuestProgress.DestroyedFirstBoss;
                 }
+
+                FindObjectOfType<Exterminator>().Exterminate();
             }
         }
     }

@@ -633,10 +633,9 @@ MonoBehaviour:
   chargingThreshold: 1
   RespawnsRemaining: 3
   respawnLines:
-  - "Ein kristallenes Ger\xE4usch verhallt in der Ferne."
-  - Ein verbrannter Geruch liegt in der Luft.
-  - Die Luft ist wie statisch aufgeladen.
-  - "Ein tiefes Grollen ert\xF6nt aus der Erde."
+  - Another life extinguished, to be reborn from the ashes.
+  - Rise again, to erase all that stands in your way.
+  - Crush them all.
 --- !u!58 &62567443
 CircleCollider2D:
   m_ObjectHideFlags: 0

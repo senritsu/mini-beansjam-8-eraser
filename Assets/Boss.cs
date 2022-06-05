@@ -66,7 +66,7 @@ public class Boss : MonoBehaviour
 
     private IEnumerator BossBehaviour()
     {
-        DialogMaster.master.PrintDialog("DU SOLLTEST NICHT HIER SEIN!!!",Color.red, 3f);
+        DialogMaster.master.PrintDialog("WHO DARES TO INTRUDE IN OUR GARDENS!!!",Color.red, 3f);
         
         yield return new WaitForSeconds(1.5f);
         

@@ -24,33 +24,33 @@ public class SmithDialog : MonoBehaviour
     {
         GameProgression.Instance.smithQuestProgress = GameProgression.SmithQuestProgress.TalkedForTheFirstTime;
         
-        DialogMaster.master.PrintDialog("Du solltest nicht hier sein...",Color.red, 3f);
+        DialogMaster.master.PrintDialog("This is no place for you",Color.red, 3f);
 
         yield return new WaitForSeconds(4f);
         
-        DialogMaster.master.PrintDialog("Schreite durch das Portal, vielleicht findest du etwas dass dich von hier fort bringt.\nDu hast nicht viel Zeit.", Color.white, 3f);
+        DialogMaster.master.PrintDialog("Portal's right there...\ntry to find...anything.", Color.white, 3f);
     }
 
     private IEnumerator DisplayReminder()
     {
-        DialogMaster.master.PrintDialog("Schreite durch das Portal, vielleicht findest du etwas dass dich von hier fort bringt.\nDu hast nicht viel Zeit.", Color.white, 3f);
+        DialogMaster.master.PrintDialog("Portal's right there...\ntry to find...anything.", Color.white, 3f);
 
         yield return null;
     }
 
     private IEnumerator DisplayPity()
     {
-        DialogMaster.master.PrintDialog("Ich hoffe du weißt was du tust...", Color.white, 3f);
+        DialogMaster.master.PrintDialog("Seems like that place got the better of you for now.", Color.white, 3f);
 
         yield return null;
     }
 
     private IEnumerator DisplaySecondDialogue()
     {
-        DialogMaster.master.PrintDialog("Was für eine Spur der Verwüstung.\nNun, das ist ein Anfang...\n",Color.white, 2f);
+        DialogMaster.master.PrintDialog("That place, you erased all life in it.",Color.white, 2f);
 
         yield return new WaitForSeconds(5f);
         
-        DialogMaster.master.PrintDialog("Und das wars auch schon mit Eraser, vielen Dank fürs Spielen!",Color.green, 2f);
+        DialogMaster.master.PrintDialog("And that is the end of Eraser. Thanks for playing!",Color.green, 2f);
     }
 }

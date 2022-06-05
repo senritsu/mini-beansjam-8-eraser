@@ -1068,7 +1068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smithQuestProgress: 1
-  activatedCheckpoints: 00000000
+  activatedCheckpoints: 0000000001000000
 --- !u!4 &1063623622
 Transform:
   m_ObjectHideFlags: 0

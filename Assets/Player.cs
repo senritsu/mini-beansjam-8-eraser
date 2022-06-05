@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Linq;
 using Droni;
@@ -51,6 +50,11 @@ public class Player : MonoBehaviour
         {
             _respawnMarkers.SetActive(false);
         }
+    }
+
+    private void Start()
+    {
+        ResetToLastCheckpoint();
     }
 
     // Update is called once per frame
@@ -198,7 +202,9 @@ public class Player : MonoBehaviour
         var lastActiveCheckpoint = FindObjectsOfType<Checkpoint>()
             .Where(x => x.IsActive)
             .OrderBy(x => x.checkpoint)
-            .Last();
+            .LastOrDefault();
+
+        if (lastActiveCheckpoint == null) return;
 
         transform.position = lastActiveCheckpoint.transform.position;
     }

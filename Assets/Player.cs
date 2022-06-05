@@ -174,6 +174,11 @@ public class Player : MonoBehaviour
 
     private void ReturnToHub()
     {
+        if (GameProgression.Instance.smithQuestProgress == GameProgression.SmithQuestProgress.TalkedForTheFirstTime)
+        {
+            GameProgression.Instance.smithQuestProgress = GameProgression.SmithQuestProgress.ForcedBackToHub;
+        }
+
         SceneManager.LoadScene("Hub");
     }
 }

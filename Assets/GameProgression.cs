@@ -7,7 +7,8 @@ public class GameProgression : MonoBehaviour
     {
         Start,
         TalkedForTheFirstTime,
-        DestroyedFirstBoss,
+        ForcedBackToHub,
+        DestroyedFirstBoss
     }
 
     public enum Checkpoint

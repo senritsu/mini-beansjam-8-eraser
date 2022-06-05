@@ -15,6 +15,7 @@ public class SmithDialog : MonoBehaviour
         {
             GameProgression.SmithQuestProgress.Start => DisplayInitialDialogue(),
             GameProgression.SmithQuestProgress.TalkedForTheFirstTime => DisplayReminder(),
+            GameProgression.SmithQuestProgress.ForcedBackToHub => DisplayPity(),
             GameProgression.SmithQuestProgress.DestroyedFirstBoss => DisplaySecondDialogue(),
         });
     }
@@ -27,20 +28,29 @@ public class SmithDialog : MonoBehaviour
 
         yield return new WaitForSeconds(4f);
         
-        DialogMaster.master.PrintDialog("Schreite durch das Portal, vielleicht findest du einen Weg\nDu hast nicht viel Zeit", Color.white, 3f);
+        DialogMaster.master.PrintDialog("Schreite durch das Portal, vielleicht findest du einen Weg\nDu hast nicht viel Zeit.", Color.white, 3f);
     }
 
     private IEnumerator DisplayReminder()
     {
-        DialogMaster.master.PrintDialog("Schreite durch das Portal, vielleicht findest du einen Weg\nDu hast nicht viel Zeit", Color.white, 3f);
+        DialogMaster.master.PrintDialog("Schreite durch das Portal, vielleicht findest du einen Weg\nDu hast nicht viel Zeit.", Color.white, 3f);
+
+        yield return null;
+    }
+
+    private IEnumerator DisplayPity()
+    {
+        DialogMaster.master.PrintDialog("Ich hoffe du weißt was du tust...", Color.white, 3f);
 
         yield return null;
     }
 
     private IEnumerator DisplaySecondDialogue()
     {
-        DialogMaster.master.PrintDialog("TODO TODO TODO TODO",Color.white, 2f);
+        DialogMaster.master.PrintDialog("Was für eine Spur der Verwüstung.\nMeine Befürchtung war wohl wahr, du solltest nicht hier sein...\n",Color.white, 2f);
 
-        yield return null;
+        yield return new WaitForSeconds(5f);
+        
+        DialogMaster.master.PrintDialog("Und das wars auch schon mit Eraser, vielen Dank fürs spielen!",Color.green, 2f);
     }
 }

@@ -13,12 +13,18 @@ public class Boss : MonoBehaviour
     public int spawnCount;
     public int health;
     private Player _player;
-    public bool isAggressive;
+    public bool isAwake;
     private SpriteRenderer _renderer;
     private Color _defaultColor;
+    private static readonly int IsAwakeParameter = Animator.StringToHash("IsAwake");
+    private Animator _animator;
+    private MoveTowardsPlayer _moveTowardsPlayer;
+    public GameObject deathEffect;
 
     private void Awake()
     {
+        _moveTowardsPlayer = GetComponent<MoveTowardsPlayer>();
+        _animator = GetComponent<Animator>();
         _player = FindObjectOfType<Player>();
         _renderer = GetComponent<SpriteRenderer>();
         
@@ -38,26 +44,31 @@ public class Boss : MonoBehaviour
 
     private void Update()
     {
-        if (isAggressive) return;
+        if (isAwake) return;
         
         var distanceToPlayer = Vector3.Distance(transform.position, _player.transform.position);
 
         if (distanceToPlayer <= 15f)
         {
-            BecomeAggressive();
+            WakeUp();
         }
     }
 
-    private void BecomeAggressive()
+    private void WakeUp()
     {
-        isAggressive = true;
+        isAwake = true;
         _renderer.color = _defaultColor;
-        GetComponent<MoveTowardsPlayer>().enabled = true;
-        StartCoroutine(SpawnLoop());
+        _animator.SetBool(IsAwakeParameter, true);
+        
+        StartCoroutine(BossBehaviour());
     }
 
-    private IEnumerator SpawnLoop()
+    private IEnumerator BossBehaviour()
     {
+        yield return new WaitForSeconds(1.5f);
+        
+        _moveTowardsPlayer.enabled = true;
+        
         while (true)
         {
             yield return new WaitForSeconds(spawnInterval);
@@ -81,7 +92,7 @@ public class Boss : MonoBehaviour
             }
         }
     }
-    
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         var damage = col.GetComponent<Damage>()?.amount;
@@ -90,16 +101,30 @@ public class Boss : MonoBehaviour
             health -= damage.Value;
             if (health <= 0)
             {
-                Destroy(gameObject);
-
-                if (GameProgression.Instance.smithQuestProgress < GameProgression.SmithQuestProgress.DestroyedFirstBoss)
-                {
-                    GameProgression.Instance.smithQuestProgress =
-                        GameProgression.SmithQuestProgress.DestroyedFirstBoss;
-                }
-
-                FindObjectOfType<Exterminator>().Exterminate();
+                Die();
             }
         }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
+        
+        var container = new GameObject();
+        container.transform.position = transform.position;
+        container.transform.localScale = Vector3.one * 4;
+        for (var i = 0; i < 3; i++)
+        {
+            var instance = Instantiate(deathEffect, transform.position + (Vector3)Random.insideUnitCircle * 2, Quaternion.identity);
+            instance.transform.SetParent(container.transform, true);
+        }
+
+        if (GameProgression.Instance.smithQuestProgress < GameProgression.SmithQuestProgress.DestroyedFirstBoss)
+        {
+            GameProgression.Instance.smithQuestProgress =
+                GameProgression.SmithQuestProgress.DestroyedFirstBoss;
+        }
+
+        FindObjectOfType<Exterminator>().Exterminate();
     }
 }

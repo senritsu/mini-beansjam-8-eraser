@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Droni;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Quaternion = UnityEngine.Quaternion;
@@ -65,6 +66,8 @@ public class Boss : MonoBehaviour
 
     private IEnumerator BossBehaviour()
     {
+        DialogMaster.master.PrintDialog("DU SOLLTEST NICHT HIER SEIN!!!",Color.red, 3f);
+        
         yield return new WaitForSeconds(1.5f);
         
         _moveTowardsPlayer.enabled = true;

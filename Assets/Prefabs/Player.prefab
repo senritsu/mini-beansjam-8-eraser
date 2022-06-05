@@ -632,6 +632,11 @@ MonoBehaviour:
   chargeSound: {fileID: 1691555560}
   chargingThreshold: 1
   RespawnsRemaining: 3
+  respawnLines:
+  - "Ein kristallenes Ger\xE4usch verhallt in der Ferne."
+  - Ein verbrannter Geruch liegt in der Luft.
+  - Die Luft ist wie statisch aufgeladen.
+  - "Ein tiefes Grollen ert\xF6nt aus der Erde."
 --- !u!58 &62567443
 CircleCollider2D:
   m_ObjectHideFlags: 0

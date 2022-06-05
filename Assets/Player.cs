@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Linq;
+using Droni;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
@@ -34,6 +35,8 @@ public class Player : MonoBehaviour
     private Animator _animator;
     private static readonly int FadeOutDeathParameter = Animator.StringToHash("FadeOutDeath");
     private bool _dead;
+
+    public string[] respawnLines;
 
     // Start is called before the first frame update
     private void Awake()
@@ -179,6 +182,10 @@ public class Player : MonoBehaviour
             RespawnsRemaining--;
             Destroy(_respawnMarkers.transform.GetChild(0).gameObject);
             _dead = false;
+
+            yield return new WaitForSeconds(1);
+            
+            DialogMaster.master.PrintDialog(respawnLines[Random.Range(0, respawnLines.Length)],Color.gray, 4f);
         }
         else
         {

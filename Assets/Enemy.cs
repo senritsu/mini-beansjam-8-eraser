@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using Droni;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
     public GameObject deathEffect;
     private HashSet<Plant> _energySources = new();
+    public string[] deathLines;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -47,5 +50,10 @@ public class Enemy : MonoBehaviour
     {
         Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
+
+        if (Random.value <= 0.01f)
+        {
+            DialogMaster.master.PrintDialog(deathLines[Random.Range(0, deathLines.Length)],Color.red, 2f);
+        }
     }
 }

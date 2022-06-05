@@ -125,6 +125,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 3120583102803961864, guid: bac6e271d274b7c4a88ea0f422924103, type: 3}
+  deathLines:
+  - Du solltest nicht hier sein!
+  - Eindringling!
+  - "Du kannst uns nicht alle zerst\xF6ren!"
 --- !u!114 &-2079842084656280862
 MonoBehaviour:
   m_ObjectHideFlags: 0

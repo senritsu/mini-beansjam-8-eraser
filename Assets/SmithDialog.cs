@@ -28,12 +28,12 @@ public class SmithDialog : MonoBehaviour
 
         yield return new WaitForSeconds(4f);
         
-        DialogMaster.master.PrintDialog("Schreite durch das Portal, vielleicht findest du einen Weg\nDu hast nicht viel Zeit.", Color.white, 3f);
+        DialogMaster.master.PrintDialog("Schreite durch das Portal, vielleicht findest du einen Weg.\nDu hast nicht viel Zeit.", Color.white, 3f);
     }
 
     private IEnumerator DisplayReminder()
     {
-        DialogMaster.master.PrintDialog("Schreite durch das Portal, vielleicht findest du einen Weg\nDu hast nicht viel Zeit.", Color.white, 3f);
+        DialogMaster.master.PrintDialog("Schreite durch das Portal, vielleicht findest du einen Weg.\nDu hast nicht viel Zeit.", Color.white, 3f);
 
         yield return null;
     }

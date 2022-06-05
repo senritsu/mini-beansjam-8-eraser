@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,7 @@ public class Portal : MonoBehaviour
 
     public string targetSceneName;
     private static readonly int Activated = Animator.StringToHash("Activate");
+    private static readonly int FadeOutParameter = Animator.StringToHash("FadeOut");
     private Animator _animator;
 
     private void Awake()
@@ -31,9 +33,17 @@ public class Portal : MonoBehaviour
 
         if (player)
         {
-            SceneManager.LoadScene(targetSceneName);
-            
+            StartCoroutine(Teleport());
         }
+    }
+
+    private IEnumerator Teleport()
+    {
+        GameObject.Find("GhettoCameraFade").GetComponent<Animator>().SetTrigger(FadeOutParameter);
+        
+        yield return new WaitForSeconds(1);
+        
+        SceneManager.LoadScene(targetSceneName);
     }
 
     // Update is called once per frame

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -31,6 +32,8 @@ public class Player : MonoBehaviour
     private GameObject _respawnMarkers;
     private static readonly int MovingParameter = Animator.StringToHash("Moving");
     private Animator _animator;
+    private static readonly int FadeOutDeathParameter = Animator.StringToHash("FadeOutDeath");
+    private bool _dead;
 
     // Start is called before the first frame update
     private void Awake()
@@ -155,12 +158,27 @@ public class Player : MonoBehaviour
 
     public void TakeDamage()
     {
+        if (_dead) return;
+        
+        StartCoroutine(DeathSequence());
+    }
+
+    private IEnumerator DeathSequence()
+    {
+        _dead = true;
+        
+        var fadeAnimator = GameObject.Find("GhettoCameraFade").GetComponent<Animator>();
+        fadeAnimator.SetTrigger(FadeOutDeathParameter);
+        
+        yield return new WaitForSeconds(1);
+        
         if (RespawnsRemaining > 0)
         {
             ResetToLastCheckpoint();
             
             RespawnsRemaining--;
             Destroy(_respawnMarkers.transform.GetChild(0).gameObject);
+            _dead = false;
         }
         else
         {

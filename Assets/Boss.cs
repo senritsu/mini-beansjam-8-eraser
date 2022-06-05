@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,7 +24,10 @@ public class Boss : MonoBehaviour
         
         _defaultColor = _renderer.color;
         _renderer.color = new Color(_defaultColor.grayscale, _defaultColor.grayscale, _defaultColor.grayscale);
+    }
 
+    private void Start()
+    {
         // check for scene name is not pretty, but it should work for now
         // if boss is disabled, portal will open
         if (GameProgression.Instance.smithQuestProgress == GameProgression.SmithQuestProgress.DestroyedFirstBoss && SceneManager.GetActiveScene().name == "Green")

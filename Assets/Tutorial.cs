@@ -3,16 +3,14 @@ using UnityEngine;
 
 public class Tutorial : MonoBehaviour
 {
-    private void Awake()
+    private IEnumerator Start()
     {
         if (GameProgression.Instance.smithQuestProgress > GameProgression.SmithQuestProgress.Start)
         {
             Destroy(gameObject);
+            yield return null;
         }
-    }
-
-    private IEnumerator Start()
-    {
+        
         yield return new WaitForSeconds(3f);
         
         Destroy(gameObject);

@@ -19,8 +19,17 @@ public class GameProgression : MonoBehaviour
     public SmithQuestProgress smithQuestProgress;
     public Checkpoint[] activatedCheckpoints;
 
+    public static GameProgression Instance { get; private set; }
+
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
         DontDestroyOnLoad(gameObject);
     }
 }

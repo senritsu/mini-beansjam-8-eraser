@@ -15,20 +15,18 @@ public class Boss : MonoBehaviour
     public bool isAggressive;
     private SpriteRenderer _renderer;
     private Color _defaultColor;
-    private GameProgression _progression;
 
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
         _renderer = GetComponent<SpriteRenderer>();
-        _progression = FindObjectOfType<GameProgression>();
         
         _defaultColor = _renderer.color;
         _renderer.color = new Color(_defaultColor.grayscale, _defaultColor.grayscale, _defaultColor.grayscale);
 
         // check for scene name is not pretty, but it should work for now
         // if boss is disabled, portal will open
-        if (_progression.smithQuestProgress == GameProgression.SmithQuestProgress.DestroyedFirstBoss && SceneManager.GetActiveScene().name == "Green")
+        if (GameProgression.Instance.smithQuestProgress == GameProgression.SmithQuestProgress.DestroyedFirstBoss && SceneManager.GetActiveScene().name == "Green")
         {
             gameObject.SetActive(false);
         }
@@ -89,8 +87,12 @@ public class Boss : MonoBehaviour
             if (health <= 0)
             {
                 Destroy(gameObject);
-                _progression.smithQuestProgress =
-                    GameProgression.SmithQuestProgress.DestroyedFirstBoss;
+
+                if (GameProgression.Instance.smithQuestProgress < GameProgression.SmithQuestProgress.DestroyedFirstBoss)
+                {
+                    GameProgression.Instance.smithQuestProgress =
+                        GameProgression.SmithQuestProgress.DestroyedFirstBoss;
+                }
             }
         }
     }

@@ -38,7 +38,7 @@ public class Portal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isActivated && !_boss)
+        if (!isActivated && (!_boss || !_boss.gameObject.activeInHierarchy))
         {
             Activate();
         }

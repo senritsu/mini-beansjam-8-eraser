@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &13467935 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 275715226761664869, guid: 724ddd18892f73747aa97d30c7124a28, type: 3}
-  m_PrefabInstance: {fileID: 275715227458064989}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &80512361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1819,26 +1814,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 275715226761664868, guid: 724ddd18892f73747aa97d30c7124a28, type: 3}
   m_PrefabInstance: {fileID: 275715227458064989}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1770408768
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 13467935}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 76990583b945d5a41bad7ff281f3c6ce, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1831609163 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3275516261397404677, guid: 4991cdff75042d84b90f168bd1e1a7f1, type: 3}
@@ -2291,10 +2266,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1575672830}
     m_Modifications:
-    - target: {fileID: 275715226761664865, guid: 724ddd18892f73747aa97d30c7124a28, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: bc75262b2ac1aae48bc79dbb87897bf3, type: 3}
     - target: {fileID: 275715226761664868, guid: 724ddd18892f73747aa97d30c7124a28, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2342,18 +2313,6 @@ PrefabInstance:
     - target: {fileID: 275715226761664869, guid: 724ddd18892f73747aa97d30c7124a28, type: 3}
       propertyPath: m_Name
       value: Boss
-      objectReference: {fileID: 0}
-    - target: {fileID: 275715227458064991, guid: 724ddd18892f73747aa97d30c7124a28, type: 3}
-      propertyPath: m_Radius
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 275715227458064991, guid: 724ddd18892f73747aa97d30c7124a28, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 275715227458064991, guid: 724ddd18892f73747aa97d30c7124a28, type: 3}
-      propertyPath: m_Offset.y
-      value: -1.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 724ddd18892f73747aa97d30c7124a28, type: 3}
@@ -2436,11 +2395,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2145817130380696277, guid: 4c100687c82928d43a0528b61b0a13c1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 234.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2145817130380696277, guid: 4c100687c82928d43a0528b61b0a13c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 109.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2145817130380696277, guid: 4c100687c82928d43a0528b61b0a13c1, type: 3}
       propertyPath: m_LocalPosition.z

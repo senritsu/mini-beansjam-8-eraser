@@ -1,6 +1,6 @@
 using System.Linq;
-using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class Player : MonoBehaviour
@@ -26,12 +26,21 @@ public class Player : MonoBehaviour
     private int chargeCounter = 0;
     private bool charging = false;
 
+    public int RespawnsRemaining;
+    private GameObject _respawnMarkers;
+
     // Start is called before the first frame update
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
         _camera = Camera.main;
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _respawnMarkers = transform.Find("RespawnMarkers").gameObject;
+
+        if (SceneManager.GetActiveScene().name == "Hub")
+        {
+            _respawnMarkers.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -136,5 +145,35 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         _rigidbody2D.velocity = _direction * speed;
+    }
+
+    public void TakeDamage()
+    {
+        if (RespawnsRemaining > 0)
+        {
+            ResetToLastCheckpoint();
+            
+            RespawnsRemaining--;
+            Destroy(_respawnMarkers.transform.GetChild(0).gameObject);
+        }
+        else
+        {
+            ReturnToHub();
+        }
+    }
+    
+    private void ResetToLastCheckpoint()
+    {
+        var lastActiveCheckpoint = FindObjectsOfType<Checkpoint>()
+            .Where(x => x.IsActive)
+            .OrderBy(x => x.checkpoint)
+            .Last();
+
+        transform.position = lastActiveCheckpoint.transform.position;
+    }
+
+    private void ReturnToHub()
+    {
+        SceneManager.LoadScene("Hub");
     }
 }
